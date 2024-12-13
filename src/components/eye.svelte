@@ -20,11 +20,8 @@
 		if (!outerDiv) return 0;
 
 		const rect = outerDiv.getBoundingClientRect();
-		console.log(rect.toJSON());
 		const centerX = (rect.left + rect.right) / 2;
 		const centerY = (rect.top + rect.bottom) / 2;
-		console.log('Center X: ', centerX);
-		console.log('Center Y: ', centerY);
 
 		// Calculate the distance from the center
 		const dx = x - centerX;
@@ -47,16 +44,15 @@
 	let posX = $derived(calculateConstrainedPosition(x, true));
 	let posY = $derived(calculateConstrainedPosition(y, false));
 
-	$inspect(posX, posY);
 </script>
 
 <div
 	bind:this={outerDiv}
-	class="h-[10rem] w-[10rem] overflow-hidden rounded-full border-2 border-black bg-white"
+	class="h-[10vh] w-[10vh] overflow-hidden rounded-full border-2 border-black bg-white"
 >
 	<div
 		bind:this={innerDiv}
-		class="h-[5rem] w-[5rem] rounded-full border-4 border-gray-400 bg-black"
+		class="h-[8vh] w-[8vh] rounded-full border-4 border-gray-400 bg-black"
 		style:transform="translate({posX - (outerDiv?.getBoundingClientRect().left || 0) - radius}px, {posY -
 			(outerDiv?.getBoundingClientRect().top || 0) -
 			radius}px)"
